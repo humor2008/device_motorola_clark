@@ -29,6 +29,8 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 TARGET_2ND_ARCH_VARIANT := armv7-a-neon
 
+ENABLE_CPUSETS := true
+
 TARGET_NO_BOOTLOADER := true
 
 BOARD_KERNEL_BASE := 0x00000000
@@ -52,8 +54,10 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_ARCH := arm64
 TARGET_USES_UNCOMPRESSED_KERNEL := true
+TARGET_KERNEL_HAVE_EXFAT := true
 BOARD_VENDOR := motorola-qcom
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 earlyprintk=msm_hsl_uart,0xf991e000 utags.blkdev=/dev/block/bootdevice/by-name/utags utags.backup=/dev/block/bootdevice/by-name/utagsBackup
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset BOARD_RAMDISK_OFFSET --tags_offset BOARD_KERNEL_TAGS_OFFSET
 
 TARGET_NO_RADIOIMAGE := true
@@ -62,19 +66,18 @@ TARGET_BOOTLOADER_BOARD_NAME := clark
 TARGET_NO_RPC := true
 TARGET_USES_LOGD := true
 
-TARGET_USES_MOTOROLA_LOG := true
 TARGET_USES_64_BIT_BINDER := true
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
 # CMHW
-BOARD_HARDWARE_CLASS := $(DEVICE_PATH)/cmhw/
+BOARD_USES_CYANOGEN_HARDWARE := true
+BOARD_HARDWARE_CLASS := \
+    $(DEVICE_PATH)/cmhw \
+    hardware/cyanogen/cmhw
 
 # Font
 EXTENDED_FONT_FOOTPRINT := true
-
-# Time service
-BOARD_USES_QC_TIME_SERVICES := true
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
@@ -83,13 +86,14 @@ AUDIO_FEATURE_ENABLED_SPKR_PROTECTION := true
 AUDIO_FEATURE_ENABLED_PCM_OFFLOAD := true
 AUDIO_FEATURE_ENABLED_FLUENCE := true
 AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
-AUDIO_FEATURE_ENABLED_FM := true
+#AUDIO_FEATURE_ENABLED_FM := true
 AUDIO_FEATURE_ENABLED_HFP := true
 AUDIO_FEATURE_ENABLED_EXTN_FORMATS := true
 AUDIO_FEATURE_ENABLED_DTS_EAGLE := true
 AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
-AUDIO_FEATURE_ENABLED_INCALL_MUSIC := true
+#AUDIO_FEATURE_ENABLED_INCALL_MUSIC := true
 AUDIO_FEATURE_ENABLED_COMPRESS_VOIP := true
+USE_CUSTOM_AUDIO_POLICY := 1
 
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
@@ -111,7 +115,8 @@ BOARD_HAVE_BLUETOOTH_QCOM := true
 BOARD_HAS_QCA_BT_ROME := true
 QCOM_BT_USE_BTNV := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
-BOARD_BLUEDROID_VENDOR_CONF := $(DEVICE_PATH)/bluetooth/libbt_vndcfg.txt
+#BOARD_BLUEDROID_VENDOR_CONF := $(DEVICE_PATH)/bluetooth/libbt_vndcfg.txt
+BOARD_BLUETOOTH_BDROID_HCILP_INCLUDED := false
 
 # QCRIL
 TARGET_RIL_VARIANT := caf
@@ -142,6 +147,9 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 # Added to indicate that protobuf-c is supported in this build
 PROTOBUF_SUPPORTED := true
 
+#Camera
+USE_DEVICE_SPECIFIC_CAMERA := true
+
 #Enable peripheral manager
 TARGET_PER_MGR_ENABLED := true
 
@@ -160,33 +168,10 @@ include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += \
     $(DEVICE_PATH)/sepolicy
 
-BOARD_SEPOLICY_UNION += \
-    atfwd.te \
-    file.te \
-    device.te \
-    adspd.te \
-    batt_health.te \
-    bluetooth.te \
-    wcnss_filter.te \
-    file_contexts \
-    healthd.te \
-    init.te \
-    init_shell.te \
-    mm-qcamerad.te \
-    qmuxd.te \
-    rild.te \
-    rmt_storage.te \
-    sysinit.te \
-    system_server.te \
-    vold.te
-
-# Time services
-# BOARD_USES_QC_TIME_SERVICES := true
-
 # Vendor Init
 TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_clark
-TARGET_LIBINIT_DEFINES_FILE := $(DEVICE_PATH)/init/init_clark.c
+TARGET_LIBINIT_DEFINES_FILE := $(DEVICE_PATH)/init/init_clark.cpp
 
 # TWRP definitions
 DEVICE_RESOLUTION := 1440x2560

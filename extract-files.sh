@@ -23,6 +23,15 @@ fi
 BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
 rm -rf $BASE/*
 
+mkdir -p $BASE/lib64/hw
+mkdir -p $BASE/lib/hw
+mkdir -p $BASE/vendor/lib64/hw
+mkdir -p $BASE/vendor/lib/hw
+mkdir -p $BASE/vendor/lib64/egl
+mkdir -p $BASE/vendor/lib/egl
+mkdir -p $BASE/vendor/lib64/mediadrm
+mkdir -p $BASE/vendor/lib/mediadrm
+
 for FILE in `egrep -v '(^#|^$)' proprietary-files.txt`; do
   OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
   FILE=`echo ${PARSING_ARRAY[0]} | sed -e "s/^-//g"`
@@ -55,6 +64,12 @@ for FILE in `egrep -v '(^#|^$)' proprietary-files.txt`; do
         cp $SRC/system/$DEST $BASE/$DEST
     else
         cp $SRC/system/$FILE $BASE/$DEST
+    fi
+    if [[ $FILE == *"lib"* ]]  && [[ $FILE != *"lib64"* ]]; then
+       echo "Attempting to get 64Bit file"
+       FILE64="${FILE/lib/lib64}"
+       DEST64="${DEST/lib/lib64}"
+       cp $SRC/system/$FILE64 $BASE/$DEST64
     fi
   fi
 done
