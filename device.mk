@@ -98,17 +98,20 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.msm8992
 
-
 # NFC packages
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
     nfc_nci.bcm2079x.default \
     NfcNci \
+    Torch \
     Tag
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
     $(LOCAL_PATH)/nfc/libnfc-brcm-20795a20.conf:system/etc/libnfc-brcm-20795a20.conf
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init.d/05perf:system/etc/init.d/05perf 
 
 # Camera
 PRODUCT_PACKAGES += \
