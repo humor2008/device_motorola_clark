@@ -1,21 +1,25 @@
 on charger
-    setprop ro.board.platform msm8992
     trigger early-fs
     trigger fs
     trigger post-fs
     trigger post-fs-data
     class_stop main
     class_stop late_start
+    trigger moto-charger
+
+on moto-charger
+    setprop ro.board.platform msm8992
     write /sys/module/msm_thermal/core_control/enabled 0
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
     write /sys/module/msm_thermal/parameters/enabled Y
     write /sys/class/devfreq/1c00000.qcom,kgsl-3d0/governor "bw_hwmon"
     write /sys/class/devfreq/qcom,cpubw.26/governor "bw_hwmon"
+    write /sys/module/lpm_levels/parameters/sleep_disabled 0
+    setprop sys.usb.config charging
     start charge_only_mode
     start batt_health
     start thermanager
-    start perfd
 
 on enable-low-power
     stop perfd
@@ -47,5 +51,5 @@ on enable-low-power
 
     start perfd
 
-on class_start:late_start
+on property:sys.boot_completed=1
     trigger enable-low-power
