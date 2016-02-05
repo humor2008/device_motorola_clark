@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
 
-<remove-project name="CyanogenMod/android_hardware_ril-caf"/>
+<remove-project name="CyanogenMod/android_hardware_ril"/>
 <project name="CyanogenMod/android_hardware_ril-caf" path="hardware/ril-caf" remote="github" revision="cm-13.0"/>
 <project name="CyanogenMod/android_hardware_ril" path="hardware/ril" remote="github" revision="cm-13.0"/>
 <project name="CyanogenMod/android_device_qcom_common" path="device/qcom/common" remote="github" revision="cm-13.0"/>
+<project name="CyanogenMod/android_hardware_sony_thermanager" path="hardware/sony/thermanager" remote="github" revision="cm-13.0"/>
 
 <project path="device/motorola/clark" name="ProjectVulpin/device_motorola_clark" remote="github" revision="rr-mm6.0" />
-<project path="vendor/motorola" name="AICP/proprietary_vendor_motorola" remote="github" revision="mm6.0" />
-<project path="kernel/motorola/msm8992" name="AICP/kernel_motorola_msm8992" remote="github" revision="mm6.0" />
+<project path="vendor/motorola" name="ProjectVulpin/proprietary_vendor_motorola" remote="github" revision="mm6.0" />
+<project path="kernel/motorola/msm8992" name="nikhil93uf/kernel-msm" remote="github" revision="cm-13.0" />
 </manifest>
+
