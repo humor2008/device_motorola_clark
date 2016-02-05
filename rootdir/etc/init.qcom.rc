@@ -602,7 +602,7 @@ service adspd /system/bin/adspd
    user audio
    group audio input qcom_diag
 
-service perfd /system/bin/perfd
+service perfd /system/vendor/bin/perfd
     class main
     user root
     disabled
