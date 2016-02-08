@@ -28,6 +28,7 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := generic
 TARGET_2ND_ARCH_VARIANT := armv7-a-neon
+TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 
 ENABLE_CPUSETS := true
 
@@ -166,6 +167,12 @@ include device/qcom/sepolicy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += \
     $(DEVICE_PATH)/sepolicy
+
+# Time services
+BOARD_USES_QC_TIME_SERVICES := true
+
+# Disable HW based full disk encryption
+TARGET_HW_DISK_ENCRYPTION := false
 
 # Vendor Init
 TARGET_UNIFIED_DEVICE := true
