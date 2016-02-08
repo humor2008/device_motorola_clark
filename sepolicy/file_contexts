@@ -1,5 +1,6 @@
 /fsg/(.*)                     u:object_r:firmware_file:s0
 /bt_firmware/(.*)             u:object_r:firmware_file:s0
+/data/chargeonlymode(/.*)?    u:object_r:chargeonly_data_file:s0
 
 #/dev/block/mmcblk0p(.*)       u:object_r:mmc_block_device:s0
 #/dev/block/mmcblk1p(.*)       u:object_r:mmc_block_device:s0
@@ -19,3 +20,7 @@
 
 #CMHW
 /sys/vibrator/pwmvalue        u:object_r:vibeamp_sysfs:s0
+
+/sys/class/leds/lcd-backlight/brightness        u:object_r:sysfs_light:s0
+/sys/power/autosleep                            u:object_r:sysfs_power:s0
+/system/bin/charge_only_mode            u:object_r:charge_only_mode_exec:s0
