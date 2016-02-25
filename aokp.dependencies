@@ -1,0 +1,15 @@
+
+[
+  {
+    "remote": "github",
+    "repository": "ProjectVulpin/proprietary_vendor_motorola",
+    "target_path": "vendor/motorola",
+    "revision": "mm6.0"
+  },
+  {
+    "remote": "github",
+    "repository": "nikhil93uf/kernel-msm",
+    "target_path": "kernel/motorola/msm8992",
+    "revision": "cm-13.0"
+  }
+]
