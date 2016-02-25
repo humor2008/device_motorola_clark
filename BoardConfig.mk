@@ -179,7 +179,6 @@ TARGET_LIBINIT_DEFINES_FILE := $(DEVICE_PATH)/init/init_clark.cpp
 
 # TWRP definitions
 DEVICE_RESOLUTION := 1440x2560
-TW_BOARD_CUSTOM_GRAPHICS := ../../../$(DEVICE_PATH)/recovery/graphics.c
 TW_INCLUDE_L_CRYPTO := true
 TW_TARGET_USES_QCOM_BSP := true
 TW_NEW_ION_HEAP := true
