@@ -6,11 +6,11 @@ TARGET_SCREEN_WIDTH := 1440
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 
 # Inherit some common AOKP stuff.
-$(call inherit-product, vendor/aokp/config/common_full_phone.mk)
+$(call inherit-product, vendor/aokp/configs/common_full_phone.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Enhanced NFC
-$(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
+$(call inherit-product, vendor/aokp/configs/nfc_enhanced.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/motorola/clark/aosp_clark.mk)
