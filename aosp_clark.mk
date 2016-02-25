@@ -26,7 +26,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 PRODUCT_NAME := aosp_clark
 PRODUCT_DEVICE := clark
 PRODUCT_BRAND := Android
-PRODUCT_MODEL := XT1575
+PRODUCT_MODEL := XT1570
 PRODUCT_MANUFACTURER := motorola
 
 $(call inherit-product, device/motorola/clark/device.mk)
