@@ -15,4 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/suda.mk
+    $(LOCAL_DIR)/cm.mk
