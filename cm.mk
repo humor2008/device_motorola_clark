@@ -17,7 +17,7 @@ $(call inherit-product, device/motorola/clark/aosp_clark.mk)
 DEVICE_PACKAGE_OVERLAYS += device/motorola/clark/overlay
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_NAME := suda_clark
+PRODUCT_NAME := cm_clark
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := XT1570
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
