@@ -1,0 +1,4 @@
+allow toolbox init:fifo_file { write read getattr };
+allow toolbox self:capability chown;
+allow toolbox sysfs:file setattr;
+
