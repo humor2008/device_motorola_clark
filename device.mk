@@ -133,7 +133,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.clark \
+    camera.msm8992 \
     libcamera \
     libqomx_core \
     libmm-qcamera \

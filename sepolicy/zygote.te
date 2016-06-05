@@ -1,0 +1,6 @@
+allow zygote device:file open;
+allow zygote init:unix_stream_socket { getattr listen };
+allow zygote display_service:service_manager find;
+allow zygote package_service:service_manager find;
+allow zygote activity_service:service_manager find;
+allow zygote system_server:binder { call transfer };

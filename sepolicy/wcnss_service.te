@@ -1,0 +1,3 @@
+allow wcnss_service init:fifo_file { read write getattr };
+allow wcnss_service netd_socket:sock_file write;
+allow wcnss_service netd_socket:sock_file write;
