@@ -59,6 +59,11 @@ PRODUCT_PACKAGES += \
     mm-qcamera-app \
     Snap
 
+# CMActions
+PRODUCT_PACKAGES += \
+   CMActions \
+   libjni_CMActions
+
 # Display
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := 560dpi
