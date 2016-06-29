@@ -27,7 +27,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
 
-import org.cyanogenmod.internal.util.ScreenType;
 
 public class TouchscreenGestureSettings extends PreferenceActivity {
     private static final String CATEGORY_AMBIENT_DISPLAY = "ambient_display_key";
