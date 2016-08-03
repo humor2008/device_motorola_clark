@@ -50,6 +50,9 @@ write /sys/module/lpm_levels/system/a57/a57-l2-retention/idle_enabled 0
 
 # Setup Little interactive settings
 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
+write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
+write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
 restorecon -R /sys/devices/system/cpu # must restore after interactive
 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load 1
 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif 1
@@ -65,11 +68,15 @@ write /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif 1
 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 384000
 
 # Make sure CPU 4 is only to configure big settings
+write /sys/devices/system/cpu/cpu1/online 1
+write /sys/devices/system/cpu/cpu2/online 1
+write /sys/devices/system/cpu/cpu3/online 1
 write /sys/devices/system/cpu/cpu4/online 1
 restorecon -R /sys/devices/system/cpu # must restore after online
 
 # Setup Big interactive settings
 write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor interactive
+write /sys/devices/system/cpu/cpu5/cpufreq/scaling_governor interactive
 restorecon -R /sys/devices/system/cpu # must restore after interactive
 write /sys/devices/system/cpu/cpu4/cpufreq/interactive/use_sched_load 1
 write /sys/devices/system/cpu/cpu4/cpufreq/interactive/use_migration_notif 1
@@ -153,3 +160,4 @@ get-set-forall /sys/devices/soc.0/qcom,bcl.*/mode enable
 
 # allow CPUs to go in deeper idle state than C0
 write /sys/module/lpm_levels/parameters/sleep_disabled 0
+
