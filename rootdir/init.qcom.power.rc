@@ -37,3 +37,4 @@ on boot
     write /sys/module/process_reclaim/parameters/pressure_min 10
     write /sys/module/process_reclaim/parameters/per_swap_size 1024
     exec - root root system -- /system/bin/init.qcom.power.sh
+    chmod 0444 /sys/devices/system/cpu/cpu4/core_ctl/min_cpus
